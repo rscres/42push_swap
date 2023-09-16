@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:55:46 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/15 21:27:02 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:37:35 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,14 @@ void	swap_all(t_dbl_list *stack_a, t_dbl_list *stack_b)
 void	rotate_a(t_dbl_list *stack_a)
 {
 	t_dbl_list	*tmp;
+	t_dbl_list	*head;
 
+	head = stack_a;
 	tmp = stack_a;
 	while (stack_a->next != NULL)
 		stack_a = stack_a->next;
+	tmp->prev = stack_a;
 	stack_a->next = tmp;
+
 	write(1, "ra\n", 3);
 }
