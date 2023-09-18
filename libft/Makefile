@@ -11,7 +11,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	get_next_line.c ft_printf/ft_printf.c ft_printf/num_printers.c\
 	ft_printf/handlers.c ft_printf/checkers.c\
 	ft_dbl_lstadd_back.c ft_dbl_lstadd_front.c ft_dbl_lstclear.c\
-	ft_dbl_lstnew.c ft_dbl_lstdelone.c
+	ft_dbl_lstnew.c ft_dbl_lstdelone.c ft_atol.c
 CC = cc
 FLAGS = -Wall -Werror -Wextra -g3
 NAME = libft.a
@@ -20,15 +20,15 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 	
 fclean: clean
-	rm -rf libft.a	
+	@rm -rf libft.a	
 
 re: fclean all
