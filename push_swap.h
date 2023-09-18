@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 00:10:09 by renato           ###   ########.fr       */
+/*   Updated: 2023/09/18 18:27:26 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,24 @@
 
 # include <stdlib.h>
 # include "libft/libft.h"
+# include <stdio.h>
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
+//Movement
 void	swap_a(t_dbl_list **stack_a);
-void	swap_a(t_dbl_list **stack_b);
+void	swap_b(t_dbl_list **stack_b);
 void	swap_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
 void	rotate_a(t_dbl_list **stack_a);
 void	rotate_b(t_dbl_list **stack_b);
 void	rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
+void	reverse_rotate_a(t_dbl_list **stack_a);
+
+//check.c
+int		check_sorted(t_dbl_list *stack_a);
+int		check_doubles(t_dbl_list *stack_a);
+int		check_int(char **arg);
 
 
 #endif //PUSH_SWAP_H

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:55:46 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 00:32:23 by renato           ###   ########.fr       */
+/*   Updated: 2023/09/18 18:32:31 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,19 @@ void	rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b)
 	write(1, "rr\n", 3);
 }
 
-void	push_b(t_dbl_list **stack_a, t_dbl_list **stack_b)
+void	reverse_rotate_a(t_dbl_list **stack_a)
 {
-	t_dbl_list *tmp;
+	t_dbl_list	*tmp;
+	t_dbl_list	*head;
 
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	(*stack_a)->prev = NULL;
-	(*stack_b)->prev = tmp;
-	tmp->next = *stack_b;
-	stack_b = &tmp;
+	head = *stack_a;
+	tmp = (*stack_a)->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = head;
+	tmp->prev->next = NULL;
+	tmp->prev = NULL;
+	head->prev = tmp;
+	stack_a = &tmp;
+	printf("num: %d\nnext: %d\n\n", *((int *)tmp->content), *((int *)tmp->next->content));
 }

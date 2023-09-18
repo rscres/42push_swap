@@ -6,12 +6,11 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 17:49:25 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:27:31 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	check_sorted(t_dbl_list *stack_a)
 {

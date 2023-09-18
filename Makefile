@@ -4,23 +4,33 @@ FLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(SRC:.c=.o)
 
 SRC =	push_swap.c	\
-		move.c		
+		move.c		\
+		check.c
 
 LIBS = -Llibft -lft
 
+LIBFT = libft.a
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) -o $(NAME)
+
+$(LIBFT):
+	@echo Creating libft.
+	@make -C libft
+	@echo Libft done.
 
 %.o: %.c
 	$(CC) $(CC_FLAGS) -O3 -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
+	@make -C libft clean
 
 fclean: clean
 	rm -rf push_swap
+	@make -C libft fclean
 
 re: fclean all
 
