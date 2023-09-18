@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/15 20:47:08 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/17 22:26:55 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ typedef struct s_dbl_list
 t_dbl_list	*ft_dbl_lstnew(void *content);
 void		ft_dbl_lstadd_front(t_dbl_list **lst, t_dbl_list *new);
 void		ft_dbl_lstadd_back(t_dbl_list **lst, t_dbl_list *new);
-void		ft_dbl_lstclear(t_dbl_list **lst, void (*del)(void*));
+void		ft_dbl_lstclear(t_dbl_list **lst);
 void		ft_dbl_lstdelone(t_dbl_list *lst, void (*del)(void*));
 
 #endif

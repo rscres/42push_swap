@@ -24,4 +24,7 @@ fclean: clean
 
 re: fclean all
 
+valgrind:
+	@valgrind --leak-check=full --track-origins=yes ./push_swap $(arg)
+
 .PHONY: all clean fclean re
