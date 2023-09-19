@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dbl_lstdelone.c                                 :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 19:30:06 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 11:52:08 by rseelaen         ###   ########.fr       */
+/*   Created: 2023/09/19 12:22:58 by rseelaen          #+#    #+#             */
+/*   Updated: 2023/09/19 12:39:37 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dbl_lstdelone(t_dbl_list *lst, void (*del)(void*))
+size_t	ft_arrlen(char **arr)
 {
-	t_dbl_list	*next;
-	t_dbl_list	*prev;
+	size_t	i;
 
-	if (!lst)
-		return ;
-	next = lst->next;
-	prev = lst->prev;
-	del(lst->content);
-	free(lst);
-	if (next)
-		next->prev = prev;
-	if (prev)
-		prev->next = next;
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }

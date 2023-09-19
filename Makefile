@@ -8,7 +8,9 @@ SRC =	push_swap.c		\
 		rotate.c		\
 		reverse_rotate.c\
 		push.c			\
-		check.c
+		check.c			\
+		algo_3arg.c		\
+		algo_large.c
 
 LIBS = -Llibft -lft
 

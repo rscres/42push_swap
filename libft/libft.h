@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 17:48:42 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:34:27 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int			ft_printf(const char *s, ...);
 // Misc functions
 int			ft_abs(int x);
 void		ft_swap(int *a, int *b);
+size_t		ft_arrlen(char **arr);
 
 // Printf functions
 //FLAGS
@@ -131,6 +132,7 @@ typedef struct s_dbl_list
 }	t_dbl_list;
 
 t_dbl_list	*ft_dbl_lstnew(void *content);
+int			ft_dbl_lstsize(t_dbl_list *lst);
 void		ft_dbl_lstadd_front(t_dbl_list **lst, t_dbl_list *new);
 void		ft_dbl_lstadd_back(t_dbl_list **lst, t_dbl_list *new);
 void		ft_dbl_lstclear(t_dbl_list **lst);

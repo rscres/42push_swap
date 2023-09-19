@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dbl_lstdelone.c                                 :+:      :+:    :+:   */
+/*   ft_dbl_lstsize.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 19:30:06 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 11:52:08 by rseelaen         ###   ########.fr       */
+/*   Created: 2023/09/19 16:31:25 by rseelaen          #+#    #+#             */
+/*   Updated: 2023/09/19 16:34:00 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dbl_lstdelone(t_dbl_list *lst, void (*del)(void*))
+int	ft_dbl_lstsize(t_dbl_list *lst)
 {
-	t_dbl_list	*next;
-	t_dbl_list	*prev;
+	int	size;
 
 	if (!lst)
-		return ;
-	next = lst->next;
-	prev = lst->prev;
-	del(lst->content);
-	free(lst);
-	if (next)
-		next->prev = prev;
-	if (prev)
-		prev->next = next;
+		return (0);
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }
