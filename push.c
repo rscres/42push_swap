@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 23:22:58 by renato            #+#    #+#             */
-/*   Updated: 2023/09/18 23:23:21 by renato           ###   ########.fr       */
+/*   Updated: 2023/09/19 00:50:22 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_b(t_dbl_list **stack_a, t_dbl_list **stack_b)
 {
 	t_dbl_list	*tmp;
 
-	if (!stack_b)
+	if (!stack_a)
 		return ;
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
@@ -31,7 +31,7 @@ void	push_a(t_dbl_list **stack_b, t_dbl_list **stack_a)
 {
 	t_dbl_list	*tmp;
 
-	if (!stack_a)
+	if (!stack_b)
 		return ;
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
