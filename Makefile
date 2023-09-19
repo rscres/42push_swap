@@ -3,8 +3,11 @@ CC = cc
 FLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(SRC:.c=.o)
 
-SRC =	push_swap.c	\
-		move.c		\
+SRC =	push_swap.c		\
+		swap.c			\
+		rotate.c		\
+		reverse_rotate.c\
+		push.c			\
 		check.c
 
 LIBS = -Llibft -lft

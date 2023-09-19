@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 18:27:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:02:30 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	rotate_a(t_dbl_list **stack_a);
 void	rotate_b(t_dbl_list **stack_b);
 void	rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
 void	reverse_rotate_a(t_dbl_list **stack_a);
+void	reverse_rotate_b(t_dbl_list **stack_b);
+void	reverse_rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
+void	push_b(t_dbl_list **stack_a, t_dbl_list **stack_b);
 
 //check.c
 int		check_sorted(t_dbl_list *stack_a);
