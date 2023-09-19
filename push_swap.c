@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 00:09:26 by renato           ###   ########.fr       */
+/*   Updated: 2023/09/19 00:15:41 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,13 @@ int	main(int argc, char **argv)
 		len = create_lst_multiarg(&stack_a, argv, argc);
 	}
 	print_list(stack_a);
-	if (len == 2)
-	{
-		if (check_sorted(stack_a))
-			return (0);
+	if (check_sorted(stack_a))
+		return (0);
+	if (len == 2)	
 		swap_a(&stack_a);
-
+	if (len == 3)
+	{
+		printf("len == 3\n");
 	}
 	print_list(stack_a);
 	ft_dbl_lstclear(&stack_a);
