@@ -10,7 +10,9 @@ SRC =	push_swap.c		\
 		push.c			\
 		check.c			\
 		algo_3arg.c		\
-		algo_large.c
+		algo_5elem.c	\
+		algo_large.c	\
+		error.c
 
 LIBS = -Llibft -lft
 

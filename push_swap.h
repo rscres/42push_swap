@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 16:38:00 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:00:16 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,14 @@ int		check_int(char **arg);
 //algo_3arg.c
 void	algo_3arg(t_dbl_list **stack_a);
 
+void	algo_5elem(t_dbl_list **stack_a);
+
 //algo_large.c
 void	algo_large(t_dbl_list **stack_a);
+int		find_max(t_dbl_list *stack);
+int		find_min(t_dbl_list *stack);
+
+//error.c
+void	ft_error(int n);
 
 #endif //PUSH_SWAP_H
