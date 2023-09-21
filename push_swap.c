@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/21 00:42:43 by renato           ###   ########.fr       */
+/*   Updated: 2023/09/21 16:28:26 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ int	free_tab(char **tab)
 
 int	create_lst_multiarg(t_dbl_list **stack_a, char **argv, int argc, int init)
 {
-	int		*num;
+	int		num;
 	int		i;
 
 	i = init;
 	while (i < argc)
 	{
-		num = (int *)malloc(sizeof(int));
-		if (!num)
-			return (0);
-		*num = ft_atoi(argv[i]);
+		num = ft_atoi(argv[i]);
 		if (stack_a == NULL)
 		{
 			*stack_a = ft_dbl_lstnew(num);
@@ -77,7 +74,7 @@ void	print_list(t_dbl_list *list)
 		temp = list;
 		while (temp)
 		{
-			ft_printf("%d ", *((int *)temp->content));
+			ft_printf("%d ", temp->value);
 			temp = temp->next;
 		}
 	}
@@ -92,7 +89,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	if (argc < 2)
 		ft_error(1);
-	if (argc == 2)	
+	if (argc == 2)
 		len = create_lst_1arg(&stack_a, argv[1]);
 	if (argc > 2)
 	{
@@ -112,7 +109,7 @@ int	main(int argc, char **argv)
 		while (!check_sorted(stack_a))
 			algo_3arg(&stack_a);
 	}
-	else if (len == 5)
+	else if (len <= 5)
 	{
 		algo_5elem(&stack_a);
 	}

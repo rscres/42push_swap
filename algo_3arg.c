@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:41:27 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 15:03:46 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:39:47 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	algo_3arg(t_dbl_list **stack_a)
 
 	tmp = NULL;
 	tmp = *stack_a;
-	if (*(int *)tmp->content > *(int *)tmp->next->content
-		&& *(int *)tmp->next->content < *(int *)tmp->next->next->content
-		&& *(int *)tmp->content > *(int *)tmp->next->next->content)
+	if (tmp->value > tmp->next->value
+		&& tmp->next->value < tmp->next->next->value
+		&& tmp->value > tmp->next->next->value)
 		rotate_a(stack_a);
-	else if (*(int *)tmp->content < *(int *)tmp->next->content
-		&& *(int *)tmp->next->content > *(int *)tmp->next->next->content
-		&& *(int *)tmp->content > *(int *)tmp->next->next->content)
+	else if (tmp->value < tmp->next->value
+		&& tmp->next->value > tmp->next->next->value
+		&& tmp->value > tmp->next->next->value)
 		reverse_rotate_a(stack_a);
-	else if (*(int *)tmp->content > *(int *)tmp->next->content)
+	else if (tmp->value > tmp->next->value)
 		swap_a(stack_a);
-	else if (*(int *)tmp->content < *(int *)tmp->next->content
-		&& *(int *)tmp->next->content > *(int *)tmp->next->next->content)
+	else if (tmp->value < tmp->next->value
+		&& tmp->next->value > tmp->next->next->value)
 		swap_a(stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 16:34:27 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:44:50 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,16 +126,17 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 //Double linked list
 typedef struct s_dbl_list
 {
-	void				*content;
+	int					value;
+	int					index;
 	struct s_dbl_list	*next;
 	struct s_dbl_list	*prev;
 }	t_dbl_list;
 
-t_dbl_list	*ft_dbl_lstnew(void *content);
+t_dbl_list	*ft_dbl_lstnew(int content);
 int			ft_dbl_lstsize(t_dbl_list *lst);
 void		ft_dbl_lstadd_front(t_dbl_list **lst, t_dbl_list *new);
 void		ft_dbl_lstadd_back(t_dbl_list **lst, t_dbl_list *new);
 void		ft_dbl_lstclear(t_dbl_list **lst);
-void		ft_dbl_lstdelone(t_dbl_list *lst, void (*del)(void*));
+void		ft_dbl_lstdelone(t_dbl_list *lst, void (*del)(int));
 
 #endif

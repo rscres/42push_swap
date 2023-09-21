@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/20 17:00:42 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:46:10 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	find_min(t_dbl_list *stack)
 	t_dbl_list	*tmp;
 
 	tmp = stack;
-	min = *(int *)tmp->content;
+	min = tmp->value;
 	while (tmp)
 	{
-		if (*(int *)tmp->content < min)
-			min = *(int *)tmp->content;
+		if (tmp->value < min)
+			min = tmp->value;
 		tmp = tmp->next;
 	}
 	return (min);
@@ -34,11 +34,11 @@ int	find_max(t_dbl_list *stack)
 	t_dbl_list	*tmp;
 
 	tmp = stack;
-	max = *(int *)tmp->content;
+	max = tmp->value;
 	while (tmp)
 	{
-		if (*(int *)tmp->content > max)
-			max = *(int *)tmp->content;
+		if (tmp->value > max)
+			max = tmp->value;
 		tmp = tmp->next;
 	}
 	return (max);
@@ -51,7 +51,7 @@ t_dbl_list	*move_to_b(t_dbl_list *stack_a, t_dbl_list *stack_b, int b_min, int b
 	tmp = stack_a;
 	while (tmp)
 	{
-		if (*(int *)tmp->content < b_min || *(int *)tmp->content > b_max)
+		if (tmp->value < b_min || tmp->value > b_max)
 		{
 			push_b(&stack_a, &stack_b);
 			tmp = stack_a;
@@ -76,8 +76,8 @@ void	algo_large(t_dbl_list **stack_a)
 	b_max = find_max(*stack_b);
 	while (ft_dbl_lstsize(*stack_a) > 3)
 	{
-		if (*(int *)(*stack_a)->content < b_min
-			|| *(int *)(*stack_a)->content > b_max)
+		if ((*stack_a)->value < b_min
+			|| (*stack_a)->value > b_max)
 			push_b(stack_a, stack_b);
 		else
 			rotate_a(stack_a);
@@ -85,7 +85,7 @@ void	algo_large(t_dbl_list **stack_a)
 	algo_3arg(stack_a);
 	// while (*stack_b)
 	// {	
-	// 	if (*(int *)(*stack_a)->content >)
+	// 	if ((*stack_a)->value >)
 	// 	push_a(stack_b, stack_a);
 	// }
 	print_list(*stack_a);

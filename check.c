@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/18 18:27:31 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:45:41 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_sorted(t_dbl_list *stack_a)
 	tmp = stack_a;
 	while (tmp->next)
 	{
-		if (*(int *)tmp->content > *(int *)tmp->next->content)
+		if (tmp->value > tmp->next->value)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -35,7 +35,7 @@ int	check_doubles(t_dbl_list *stack_a)
 		tmp = stack_a->next;
 		while (tmp)
 		{
-			if (*((int *)tmp->content) == *((int *)stack_a->content))
+			if (tmp->value == stack_a->value)
 				return (1);
 			tmp = tmp->next;
 		}
