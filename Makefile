@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3
+FLAGS = -Wall -Werror -Wextra -g3 -O3
 OBJ = $(SRC:.c=.o)
 
 SRC =	push_swap.c		\

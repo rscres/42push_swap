@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/20 20:03:01 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/21 00:42:43 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (i);
+}
 
 int	create_lst_multiarg(t_dbl_list **stack_a, char **argv, int argc, int init)
 {
@@ -47,12 +58,12 @@ int	create_lst_1arg(t_dbl_list **stack_a, char *arr)
 		ft_error(0);
 	tab = ft_split(arr, ' ');
 	if (!check_int(tab))
+	{
+		free_tab(tab);
 		ft_error(2);
+	}
 	create_lst_multiarg(stack_a, tab, ft_arrlen(tab), 0);
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	i = free_tab(tab);
 	return (i);
 }
 
@@ -66,10 +77,11 @@ void	print_list(t_dbl_list *list)
 		temp = list;
 		while (temp)
 		{
-			printf("%d\n", *((int *)temp->content));
+			ft_printf("%d ", *((int *)temp->content));
 			temp = temp->next;
 		}
 	}
+	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -90,7 +102,7 @@ int	main(int argc, char **argv)
 	}
 	if (check_doubles(stack_a))
 		ft_error(3);
-	print_list(stack_a);
+	// print_list(stack_a);
 	if (check_sorted(stack_a))
 		return (0);
 	if (len == 2)
@@ -108,8 +120,8 @@ int	main(int argc, char **argv)
 	// {
 	// 	algo_large(&stack_a);
 	// }
-	printf("\n");
-	print_list(stack_a);
+	// printf("\n");
+	// print_list(stack_a);
 	ft_dbl_lstclear(&stack_a);
 	return (0);
 }
