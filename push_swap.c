@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/21 16:28:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/22 19:26:31 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,11 @@ int	main(int argc, char **argv)
 	}
 	if (check_doubles(stack_a))
 		ft_error(3);
-	// print_list(stack_a);
 	if (check_sorted(stack_a))
+	{
+		ft_dbl_lstclear(&stack_a);
 		return (0);
+	}
 	if (len == 2)
 		swap_a(&stack_a);
 	else if (len == 3)
