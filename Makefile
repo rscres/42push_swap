@@ -9,9 +9,9 @@ SRC =	push_swap.c		\
 		reverse_rotate.c\
 		push.c			\
 		check.c			\
-		algo_3arg.c		\
-		algo_5elem.c	\
-		algo_large.c	\
+		sort_3.c		\
+		sort_5.c		\
+		sort_large.c	\
 		error.c
 
 LIBS = -Llibft -lft

@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/20 20:00:16 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:39:37 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ int		check_sorted(t_dbl_list *stack_a);
 int		check_doubles(t_dbl_list *stack_a);
 int		check_int(char **arg);
 
-//algo_3arg.c
+//sort_3.c
 void	algo_3arg(t_dbl_list **stack_a);
 
+//sort_5.c
 void	algo_5elem(t_dbl_list **stack_a);
 
-//algo_large.c
+//sort_large.c
 void	algo_large(t_dbl_list **stack_a);
 int		find_max(t_dbl_list *stack);
 int		find_min(t_dbl_list *stack);
