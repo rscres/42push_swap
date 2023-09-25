@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:53:12 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/22 20:08:29 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:50:32 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,38 +47,38 @@ void	algo_5elem(t_dbl_list **stack_a)
 
 	stack_b = NULL;
 	push_b(stack_a, &stack_b);
-	if (check_sorted(*stack_a))
-	{
-		while ((*stack_a)->value < stack_b->value)
-			rotate_a(stack_a);
-		push_a(&stack_b, stack_a);
-		if (find_place(*stack_a, (*stack_a)->value)
-			< ft_dbl_lstsize(*stack_a) / 2)
-			while ((*stack_a)->value != find_min(*stack_a))
-				reverse_rotate_a(stack_a);
-		else
-			while ((*stack_a)->value != find_min(*stack_a))
-				rotate_a(stack_a);
-		return ;
-	}
+	// if (check_sorted(*stack_a))
+	// {
+	// 	while ((*stack_a)->value < stack_b->value)
+	// 		rotate_a(stack_a);
+	// 	push_a(&stack_b, stack_a);
+	// 	if (find_place(*stack_a, (*stack_a)->value)
+	// 		< ft_dbl_lstsize(*stack_a) / 2)
+	// 		while ((*stack_a)->value != find_min(*stack_a))
+	// 			reverse_rotate_a(stack_a);
+	// 	else
+	// 		while ((*stack_a)->value != find_min(*stack_a))
+	// 			rotate_a(stack_a);
+	// 	return ;
+	// }
 	push_b(stack_a, &stack_b);
 	while (ft_dbl_lstsize(*stack_a) == 3 && !check_sorted(*stack_a))
 		algo_3arg(stack_a);
 	while (ft_dbl_lstsize(*stack_a) <= 5)
 	{
+		print_list(*stack_a);
 		if (check_sorted(*stack_a) && ft_dbl_lstsize(*stack_a) == 5)
 			return ;
-		print_list(*stack_a);
 		if (stack_b->value < find_min(*stack_a))
 		{
-			printf("stack_b->value < find_min(*stack_a)\n");
+			// printf("stack_b->value < find_min(*stack_a)\n");
 			while ((*stack_a)->value != find_min(*stack_a))
 				reverse_rotate_a(stack_a);
 			push_a(&stack_b, stack_a);
 		}
 		else if (stack_b->value > find_max(*stack_a))
 		{
-			printf("stack_b->value > find_max(*stack_a)\n");
+			// printf("stack_b->value > find_max(*stack_a)\n");
 			while ((*stack_a)->value != find_min(*stack_a))
 				rotate_a(stack_a);
 			push_a(&stack_b, stack_a);
@@ -89,16 +89,17 @@ void	algo_5elem(t_dbl_list **stack_a)
 		else if (stack_b->value < find_max(*stack_a)
 			&& stack_b->value > find_min(*stack_a))
 		{
-			printf("stack_b->value < find_max(*stack_a)\n");
-			while (stack_b->value < (*stack_a)->value
-				&& stack_b->value > ft_last_value(*stack_a))
+			// printf("stack_b->value < find_max(*stack_a)\n");
+			while (stack_b->value > (*stack_a)->value
+				|| stack_b->value < ft_last_value(*stack_a))
 				rotate_a(stack_a);
-			print_list(*stack_a);
+			// print_list(*stack_a);
 			push_a(&stack_b, stack_a);
 			while ((*stack_a)->value != find_min(*stack_a))
 				reverse_rotate_a(stack_a);
 		}
 	}
+	print_list(*stack_a);
 }
 
 	// // print_list(*stack_a);
