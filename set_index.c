@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 20:37:51 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/25 22:00:30 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:02:02 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ int	set_index(t_dbl_list **stack_a)
 	{
 		tmp = *stack_a;
 		min = find_min_index(*stack_a);
-		printf("min: %d\n", min);
 		while (tmp)
 		{
-			printf("%d: %d\n", tmp->index, tmp->value);
 			if (tmp->value == min)
 			{
 				tmp->index = i;
-				
+				break ;
 			}
 			tmp = tmp->next;
 		}

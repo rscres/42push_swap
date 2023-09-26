@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/26 12:34:24 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:51:57 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ int	input_checker(t_dbl_list **stack_a, int argc, char **argv)
 	int	len;
 
 	if (argc < 2)
-		ft_error(1);
+		ft_error(1, stack_a);
 	if (argc == 2)
 		len = create_lst_1arg(stack_a, argv[1]);
 	if (argc > 2)
 	{
 		if (!check_int((argv + 1)))
-			ft_error(2);
+			ft_error(2, stack_a);
 		len = create_lst_multiarg(stack_a, argv, argc, 1);
 	}
 	if (check_doubles(*stack_a))
-		ft_error(3);
+		ft_error(3, stack_a);
 	if (check_sorted(*stack_a))
 	{
 		ft_dbl_lstclear(stack_a);

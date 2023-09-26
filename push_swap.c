@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/26 12:33:04 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:54:37 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int	main(int argc, char **argv)
 	{
 		algo_5elem(&stack_a);
 	}
-	// else
-	// {
-	// 	algo_large(&stack_a);
-	// }
+	else
+	{
+		algo_large(&stack_a);
+	}
 	// printf("\n");
 	// print_list(stack_a);
 	ft_dbl_lstclear(&stack_a);
