@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/25 20:39:37 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:45:10 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-//Movement
+//push_swap.c
 void	print_list(t_dbl_list *list);
+void	print_index(t_dbl_list *list);
 
 //swap.c
 void	swap_a(t_dbl_list **stack_a);
@@ -60,5 +61,8 @@ int		find_min(t_dbl_list *stack);
 
 //error.c
 void	ft_error(int n);
+
+//set_index.c
+int		set_index(t_dbl_list **stack_a);
 
 #endif //PUSH_SWAP_H

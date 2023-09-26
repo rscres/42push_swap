@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/22 19:26:31 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:46:27 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,23 @@ void	print_list(t_dbl_list *list)
 	ft_printf("\n");
 }
 
+void	print_index(t_dbl_list *list)
+{
+	t_dbl_list	*temp;
+
+	temp = NULL;
+	if (list)
+	{
+		temp = list;
+		while (temp)
+		{
+			ft_printf("%d ", temp->index);
+			temp = temp->next;
+		}
+	}
+	ft_printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_dbl_list	*stack_a;
@@ -97,6 +114,9 @@ int	main(int argc, char **argv)
 			ft_error(2);
 		len = create_lst_multiarg(&stack_a, argv, argc, 1);
 	}
+	set_index(&stack_a);
+	print_list(stack_a);
+	print_index(stack_a);
 	if (check_doubles(stack_a))
 		ft_error(3);
 	if (check_sorted(stack_a))

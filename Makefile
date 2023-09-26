@@ -12,7 +12,8 @@ SRC =	push_swap.c		\
 		sort_3.c		\
 		sort_5.c		\
 		sort_large.c	\
-		error.c
+		error.c			\
+		set_index.c
 
 LIBS = -Llibft -lft
 
