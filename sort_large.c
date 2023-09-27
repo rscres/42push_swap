@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/27 18:30:51 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:52:13 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,14 @@ int	find_cheap_high(t_dbl_list *stack, int piece)
 		stack = stack->next;
 		i++;
 	}
-	// printf("high = %d:%d\n", stack->index, stack->value);
 	return (i);
 }
 
 int	find_cheap_low(t_dbl_list *stack, int piece)
 {
-	int	mid;
-	int	i;
-	t_dbl_list *tmp;
+	int			mid;
+	int			i;
+	t_dbl_list	*tmp;
 
 	tmp = stack;
 	while (tmp->next)
@@ -93,7 +92,6 @@ int	find_cheap_low(t_dbl_list *stack, int piece)
 		tmp = tmp->prev;
 		i++;
 	}
-	// printf("low = %d:%d\n", tmp->index, tmp->value);
 	return (i);
 }
 
@@ -112,7 +110,7 @@ int	find_place_index(t_dbl_list *stack, int index)
 	int	i;
 
 	i = -1;
-	while (stack->index != index)
+	while (stack->index != index && stack)
 	{
 		stack = stack->next;
 		i++;
@@ -178,15 +176,7 @@ void	algo_large(t_dbl_list **stack_a)
 		if (check_sorted(*stack_a))
 			break ;
 		counter++;
-		ft_printf("A: ");
-		print_list(*stack_a);
-		ft_printf("B: ");
-		print_list(*stack_b);
 	}
-	// ft_printf("A: ");
-	// print_list(*stack_a);
-	// ft_printf("B: ");
-	// print_list(*stack_b);
 	int	target;
 	while (*stack_b)
 	{
@@ -220,15 +210,7 @@ void	algo_large(t_dbl_list **stack_a)
 			push_a(stack_b, stack_a);
 		}
 		target = 0;
-		ft_printf("A: ");
-		print_list(*stack_a);
-		ft_printf("B: ");
-		print_list(*stack_b);
 	}
-	// ft_printf("A: ");
-	// print_list(*stack_a);
-	// ft_printf("B: ");
-	// print_list(*stack_b);
 	if (!check_sorted(*stack_a))
 	{
 		if (find_place_index(*stack_a, 0) < ft_dbl_lstsize(*stack_a) / 2)
