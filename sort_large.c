@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/26 20:16:22 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:30:51 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,39 @@ int	ft_last_index(t_dbl_list *stack)
 	return (tmp->index);
 }
 
+int	find_place_index(t_dbl_list *stack, int index)
+{
+	int	i;
+
+	i = -1;
+	while (stack->index != index)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
+}
+
+int	find_next_larger(t_dbl_list *stack, int index)
+{
+	int	next;
+
+	next = -1;
+	while (stack)
+	{
+		if (stack->index > index && next == -1)
+		{
+			next = stack->index;
+		}
+		if ((stack->index > index) && (stack->index < next))
+		{
+			next = stack->index;
+		}
+		stack = stack->next;
+	}
+	return (next);
+}
+
 void	algo_large(t_dbl_list **stack_a)
 {
 	t_dbl_list	**stack_b;
@@ -116,23 +149,17 @@ void	algo_large(t_dbl_list **stack_a)
 	int			cheap_low;
 	int			counter;
 
-
 	stack_b = malloc(sizeof(t_dbl_list *));
 	*stack_b = NULL;
 	size_piece = piece_size(stack_a);
-	// printf("piece = %d\n", piece);
 	counter = 0;
 	cur_piece = size_piece;
 	while (*stack_a)
 	{
-		// printf("counter = %d\n", counter);
-		// printf("piece = %d\n", cur_piece);
 		if (counter == cur_piece - 1)
 			cur_piece += size_piece;
 		cheap_high = find_cheap_high(*stack_a, cur_piece);
 		cheap_low = find_cheap_low(*stack_a, cur_piece);
-		// printf("cheap_high = %d\n", cheap_high);
-		// printf("cheap_low = %d\n", cheap_low);
 		if (cheap_high <= cheap_low)
 		{
 			while (cheap_high--)
@@ -146,63 +173,70 @@ void	algo_large(t_dbl_list **stack_a)
 			push_b(stack_a, stack_b);
 		}
 		if (ft_dbl_lstsize(*stack_a) <= 3)
-			while(!check_sorted(*stack_a))
+			while (!check_sorted(*stack_a))
 				algo_3arg(stack_a);
 		if (check_sorted(*stack_a))
 			break ;
 		counter++;
-		// print_list(*stack_a);
-		// print_list(*stack_b);
-	}
-	// print_list(*stack_a);
-	// print_list(*stack_b);
-	while (*stack_b)
-	{
-		if (!(*stack_a) || ((*stack_b)->index < (*stack_a)->index
-				&& (*stack_b)->index > ft_last_index(*stack_a)))
-		{
-			// ft_printf("here\n");
-			push_a(stack_b, stack_a);
-		}
-		else if ((*stack_b)->index < (*stack_a)->index
-			&& (*stack_b)->index < ft_last_index(*stack_a))
-		{
-			if ((*stack_b)->value < find_min(*stack_a))
-				while ((*stack_a)->value != find_min(*stack_a))
-					reverse_rotate_a(stack_a);
-			else
-			{
-				while (((*stack_b)->index < (*stack_a)->index
-					&& (*stack_b)->index < ft_last_index(*stack_a))
-				&& (*stack_a)->value != find_min(*stack_a))
-				rotate_a(stack_a);
-			}
-			push_a(stack_b, stack_a);
-		}
-		else if ((*stack_b)->index > (*stack_a)->index
-			&& (*stack_b)->index < ft_last_index(*stack_a))
-		{
-			while ((*stack_b)->index > (*stack_a)->index
-				&& (*stack_b)->index < ft_last_index(*stack_a))
-			{
-				rotate_a(stack_a);
-			}
-			push_a(stack_b, stack_a);
-		}
-		else if ((*stack_b)->index > (*stack_a)->index
-			&& (*stack_b)->index > ft_last_index(*stack_a))
-		{
-			while ((*stack_b)->index > (*stack_a)->index
-				&& (*stack_b)->index > ft_last_index(*stack_a)
-				&& (*stack_a)->value != find_min(*stack_a))
-			{
-				reverse_rotate_a(stack_a);
-			}
-			push_a(stack_b, stack_a);
-		}
 		ft_printf("A: ");
 		print_list(*stack_a);
 		ft_printf("B: ");
 		print_list(*stack_b);
 	}
+	// ft_printf("A: ");
+	// print_list(*stack_a);
+	// ft_printf("B: ");
+	// print_list(*stack_b);
+	int	target;
+	while (*stack_b)
+	{
+		if (!stack_a)
+			push_a(stack_b, stack_a);
+		target = find_next_larger(*stack_a, (*stack_b)->index);
+		if (target == -1)
+		{
+			target = find_min(*stack_a);
+			if (find_place_index(*stack_a, target)
+				< ft_dbl_lstsize(*stack_a) / 2)
+				while ((*stack_a)->value != target)
+					rotate_a(stack_a);
+			else
+				while ((*stack_a)->value != target)
+					reverse_rotate_a(stack_a);
+			push_a(stack_b, stack_a);
+		}
+		else if (find_place_index(*stack_a, target)
+			< ft_dbl_lstsize(*stack_a) / 2)
+		{
+			while ((*stack_a)->index != target)
+				rotate_a(stack_a);
+			push_a(stack_b, stack_a);
+		}
+		else if (find_place_index(*stack_a, target)
+			>= ft_dbl_lstsize(*stack_a) / 2)
+		{
+			while ((*stack_a)->index != target)
+				reverse_rotate_a(stack_a);
+			push_a(stack_b, stack_a);
+		}
+		target = 0;
+		ft_printf("A: ");
+		print_list(*stack_a);
+		ft_printf("B: ");
+		print_list(*stack_b);
+	}
+	// ft_printf("A: ");
+	// print_list(*stack_a);
+	// ft_printf("B: ");
+	// print_list(*stack_b);
+	if (!check_sorted(*stack_a))
+	{
+		if (find_place_index(*stack_a, 0) < ft_dbl_lstsize(*stack_a) / 2)
+			while ((*stack_a)->index != 0)
+				rotate_a(stack_a);
+		else
+			while ((*stack_a)->index != 0)
+				reverse_rotate_a(stack_a);
+	}
+	free(stack_b);
 }
