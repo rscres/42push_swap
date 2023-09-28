@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/27 18:52:13 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:28:44 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int	piece_size(t_dbl_list **stack)
 	int	size;
 
 	size = ft_dbl_lstsize(*stack);
-	if (size <= 100)
+	if (size <= 10)
 		return (size / 5);
+	if (size <= 100)
+		return (size / 8);
 	else if (size <= 500)
-		return (size / 11);
+		return (size / 14);
 	else
 		return (size / 21);
 }
@@ -64,7 +66,7 @@ int	find_cheap_high(t_dbl_list *stack, int piece)
 
 	mid = ft_dbl_lstsize(stack) / 2;
 	i = 0;
-	while (i < mid)
+	while (stack && i < mid)
 	{
 		if (stack->index < piece)
 			break ;
@@ -85,7 +87,7 @@ int	find_cheap_low(t_dbl_list *stack, int piece)
 		tmp = tmp->next;
 	mid = ft_dbl_lstsize(stack) / 2;
 	i = 1;
-	while (i <= mid)
+	while (stack && i <= mid)
 	{
 		if (tmp->index < piece)
 			break ;
@@ -100,7 +102,7 @@ int	ft_last_index(t_dbl_list *stack)
 	t_dbl_list	*tmp;
 
 	tmp = stack;
-	while (tmp->next)
+	while (stack && tmp->next)
 		tmp = tmp->next;
 	return (tmp->index);
 }
@@ -110,7 +112,7 @@ int	find_place_index(t_dbl_list *stack, int index)
 	int	i;
 
 	i = -1;
-	while (stack->index != index && stack)
+	while (stack && stack->index != index)
 	{
 		stack = stack->next;
 		i++;
@@ -173,6 +175,8 @@ void	algo_large(t_dbl_list **stack_a)
 		if (ft_dbl_lstsize(*stack_a) <= 3)
 			while (!check_sorted(*stack_a))
 				algo_3arg(stack_a);
+		if (*stack_b && (*stack_b)->next && (*stack_b)->index < (*stack_b)->next->index)
+			swap_b(stack_b);
 		if (check_sorted(*stack_a))
 			break ;
 		counter++;
@@ -211,9 +215,11 @@ void	algo_large(t_dbl_list **stack_a)
 		}
 		target = 0;
 	}
+	if (*stack_a && (*stack_a)->index > (*stack_a)->next->index)
+		swap_a(stack_a);
 	if (!check_sorted(*stack_a))
 	{
-		if (find_place_index(*stack_a, 0) < ft_dbl_lstsize(*stack_a) / 2)
+		if (find_place_index(*stack_a, 0) <= ft_dbl_lstsize(*stack_a) / 2)
 			while ((*stack_a)->index != 0)
 				rotate_a(stack_a);
 		else
