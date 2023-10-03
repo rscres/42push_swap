@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/29 18:15:38 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:18:11 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,13 +196,12 @@ void	algo_large(t_dbl_list **stack_a)
 {
 	t_dbl_list	**stack_b;
 	int			size_piece;
-	int			cur_piece;
 	int			cheap_high;
 	int			cheap_low;
 	int			counter;
 	int			start;
 	int			end;
-	int mid = ft_dbl_lstsize(*stack_a) / 2;
+	int 		mid = ft_dbl_lstsize(*stack_a) / 2;
 	int			start_counter;
 	int			end_counter;
 
@@ -210,57 +209,42 @@ void	algo_large(t_dbl_list **stack_a)
 	*stack_b = NULL;
 	size_piece = piece_size(stack_a);
 	counter = 0;
-	cur_piece = size_piece;
 	start = set_start(size_piece, *stack_a);
 	end = set_end(size_piece, *stack_a);
+	// printf("start = %d\n", start);
+	// printf("end = %d\n", end);
 	start_counter = 0;
 	end_counter = 0;
-	while (*stack_a)
+	// print_list(*stack_a);
+	while (ft_dbl_lstsize(*stack_a) > 3)
 	{
-		if (start_counter == start)
+		if (!search_piece(*stack_a, start, end))
 		{
 			start = set_start(size_piece, *stack_a);
-			start_counter = 0;
-		}
-		if (end_counter == end)
-		{
 			end = set_end(size_piece, *stack_a);
+			start_counter = 0;
 			end_counter = 0;
 		}
-		cheap_high = find_cheap_high(*stack_a, start);
-		cheap_low = find_cheap_low(*stack_a, end);
-		// printf("cheap_high = %d\n", cheap_high);
-		// printf("cheap_low = %d\n", cheap_low);
-		if (cheap_high > cheap_low)
+		if ((*stack_a)->index >= start && (*stack_a)->index <= end)
 		{
-			if (cheap_low < mid)
-				start_counter++;
-			else
-				end_counter++;
-			while (cheap_low--)
-				reverse_rotate_a(stack_a);
 			push_b(stack_a, stack_b);
 			if ((*stack_b)->index < mid)
-				rotate_b(stack_b);
+			{
+				start_counter++;
+				if ((*stack_b))
+					rotate_b(stack_b);
+			}
+			else
+				end_counter++;
 		}
 		else
 		{
-			if (cheap_low < mid)
-				start_counter++;
-			else
-				end_counter++;
-			// printf("cheap_high > cheap_low\n");
-			while (cheap_high--)
-				rotate_a(stack_a);
-			push_b(stack_a, stack_b);
-			if ((*stack_b)->index < mid)
-				rotate_b(stack_b);
-
+			rotate_a(stack_a);
 		}
-		if (check_sorted(*stack_a))
-			break ;
-		counter++;
 	}
+	algo_3arg(stack_a);
+	// print_list(*stack_a);
+	// print_list(*stack_b);
 	int	target;
 	while (*stack_b)
 	{
@@ -306,5 +290,56 @@ void	algo_large(t_dbl_list **stack_a)
 			while ((*stack_a)->index != 0)
 				reverse_rotate_a(stack_a);
 	}
+	// print_list(*stack_a);
 	free(stack_b);
 }
+
+// // if (start_counter == start)
+// // {
+// // 	start = set_start(size_piece, *stack_a);
+// // 	start_counter = 0;
+// // }
+// // if (end_counter == end)
+// // {
+// // 	end = set_end(size_piece, *stack_a);
+// // 	end_counter = 0;
+// // }
+// if (counter == size_piece)
+// {
+// 	start = set_start(size_piece, *stack_a);
+// 	end = set_end(size_piece, *stack_a);
+// 	counter = 0;
+// }
+// cheap_high = find_cheap_high(*stack_a, start);
+// cheap_low = find_cheap_low(*stack_a, end);
+// // printf("cheap_high = %d\n", cheap_high);
+// // printf("cheap_low = %d\n", cheap_low);
+// if (cheap_high > cheap_low)
+// {
+// 	if (cheap_low < mid)
+// 		start_counter++;
+// 	else
+// 		end_counter++;
+// 	while (cheap_low--)
+// 		reverse_rotate_a(stack_a);
+// 	push_b(stack_a, stack_b);
+// 	if ((*stack_b)->index < mid)
+// 		rotate_b(stack_b);
+// }
+// else
+// {
+// 	if (cheap_low < mid)
+// 		start_counter++;
+// 	else
+// 		end_counter++;
+// 	// printf("cheap_high > cheap_low\n");
+// 	while (cheap_high--)
+// 		rotate_a(stack_a);
+// 	push_b(stack_a, stack_b);
+// 	if ((*stack_b)->index < mid)
+// 		rotate_b(stack_b);
+
+// }
+// if (check_sorted(*stack_a))
+// 	break ;
+// counter++;
