@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/26 16:50:01 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:22:11 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
+
+typedef struct s_data
+{
+	int	size_piece;
+	int	start;
+	int	end;
+	int	start_counter;
+	int	end_counter;
+}	t_data;
 
 //push_swap.c
 void	print_list(t_dbl_list *list);
