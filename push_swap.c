@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 12:10:56 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:38:08 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	len = input_checker(&stack_a, argc, argv);
 	set_index(&stack_a);
-	// print_list(stack_a);
-	// print_index(stack_a);
 	if (len == 2)
 		swap_a(&stack_a);
 	else if (len == 3)
@@ -82,8 +80,6 @@ int	main(int argc, char **argv)
 	{
 		sort_large(&stack_a);
 	}
-	// printf("\n");
-	// print_list(stack_a);
 	ft_dbl_lstclear(&stack_a);
 	return (0);
 }

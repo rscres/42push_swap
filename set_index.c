@@ -6,13 +6,13 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 20:37:51 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/26 12:02:02 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:52:04 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_index(t_dbl_list *stack)
+int	find_smallest_index(t_dbl_list *stack)
 {
 	t_dbl_list	*tmp;
 	int			cur;
@@ -43,7 +43,7 @@ int	set_index(t_dbl_list **stack_a)
 	while (i < lst_size)
 	{
 		tmp = *stack_a;
-		min = find_min_index(*stack_a);
+		min = find_smallest_index(*stack_a);
 		while (tmp)
 		{
 			if (tmp->value == min)

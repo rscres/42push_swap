@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 15:04:12 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:42:36 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ int	find_max_index(t_dbl_list *stack)
 		tmp = tmp->next;
 	}
 	return (max);
+}
+
+static int	find_min_index(t_dbl_list *stack)
+{
+	int			min;
+	t_dbl_list	*tmp;
+
+	tmp = stack;
+	min = tmp->index;
+	while (tmp)
+	{
+		if (tmp->index < min)
+			min = tmp->index;
+		tmp = tmp->next;
+	}
+	return (min);
 }
 
 int	piece_size(t_dbl_list **stack)
@@ -238,23 +254,25 @@ int	get_to_max(t_dbl_list **stack_b, int mid)
 	return (counter);
 }
 
-int	check_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
+int	check_b_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
 {
 	int	moves_a;
 	int	moves_b;
 	int	target;
 
 	target = find_next_larger(stack_a, stack_b->index);
+	if (target == -1)
+		target = find_min_index(stack_a);
 	moves_a = find_place_index(stack_a, target);
-	target = find_max_index(stack_b);
-	moves_b = find_place_index(stack_a, target);
 	if (moves_a > ft_dbl_lstsize(stack_a) / 2)
 		moves_a = ft_dbl_lstsize(stack_a) - moves_a;
-	if (moves_b > ft_dbl_lstsize(stack_a) / 2)
-		moves_b = ft_dbl_lstsize(stack_a) - moves_b;
-	if (moves_a > moves_b)
-		return (1);
-	return (0);
+	target = find_max_index(stack_b);
+	moves_b = find_place_index(stack_b, target);
+	if (moves_b > ft_dbl_lstsize(stack_b) / 2)
+		moves_b = ft_dbl_lstsize(stack_b) - moves_b;
+	if (moves_a == -1 || moves_a < moves_b)
+		return (0);
+	return (1);
 }
 
 void	sort_large(t_dbl_list **stack_a)
@@ -271,7 +289,7 @@ void	sort_large(t_dbl_list **stack_a)
 	sort_3elem(stack_a);
 	while (*stack_b)
 	{
-		if (check_cheaper(*stack_a, *stack_b))
+		if (check_b_cheaper(*stack_a, *stack_b))
 			get_to_max(stack_b, mid);
 		target = find_next_larger(*stack_a, (*stack_b)->index);
 		mid = ft_dbl_lstsize(*stack_a) / 2;

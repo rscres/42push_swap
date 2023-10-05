@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 12:10:56 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:19:19 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_error(int n, t_dbl_list **stack_a);
 
 //set_index.c
 int		set_index(t_dbl_list **stack_a);
+// int		find_min_index(t_dbl_list *stack);
 
 //lst_create.c
 int		create_lst_1arg(t_dbl_list **stack_a, char *arr);
