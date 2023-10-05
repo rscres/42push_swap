@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:53:12 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/25 20:38:42 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:10:44 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	middle_value(t_dbl_list **stack_a, t_dbl_list **stack_b,
 		reverse_rotate_a(stack_a);
 }
 
-void	algo_5elem(t_dbl_list **stack_a)
+void	sort_5elem(t_dbl_list **stack_a)
 {
 	t_dbl_list	*stack_b;
 	int			lst_size;
@@ -76,7 +76,7 @@ void	algo_5elem(t_dbl_list **stack_a)
 	push_b(stack_a, &stack_b);
 	if (ft_dbl_lstsize(*stack_a) > 3)
 		push_b(stack_a, &stack_b);
-	algo_3arg(stack_a);
+	sort_3elem(stack_a);
 	while (ft_dbl_lstsize(*stack_a) <= 5)
 	{
 		if (check_sorted(*stack_a) && ft_dbl_lstsize(*stack_a) == lst_size)

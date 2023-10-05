@@ -6,13 +6,13 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:41:27 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/28 13:39:16 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:10:08 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	algo_3arg(t_dbl_list **stack_a)
+void	sort_3elem(t_dbl_list **stack_a)
 {
 	t_dbl_list	*tmp;
 

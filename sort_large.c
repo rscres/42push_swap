@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/04 21:53:55 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:10:56 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,11 +218,11 @@ int	get_to_max(t_dbl_list **stack_b, int mid)
 	static int	first;
 	static int	piece;
 
-	// if (first == 0)
-	// {
-	// 	first = 1;
-	// 	return (1);
-	// }
+	if (first == 0)
+	{
+		first = 1;
+		return (1);
+	}
 	if (!piece)
 		piece = piece_size(stack_b);
 	max = find_max_index(*stack_b);
@@ -235,7 +235,7 @@ int	get_to_max(t_dbl_list **stack_b, int mid)
 	return (0);
 }
 
-void	algo_large(t_dbl_list **stack_a)
+void	sort_large(t_dbl_list **stack_a)
 {
 	t_dbl_list	**stack_b;
 	int			mid;
@@ -246,7 +246,7 @@ void	algo_large(t_dbl_list **stack_a)
 	*stack_b = NULL;
 	mid = ft_dbl_lstsize(*stack_a) / 2;
 	move_to_a(stack_a, stack_b, mid);
-	algo_3arg(stack_a);
+	sort_3elem(stack_a);
 	while (*stack_b)
 	{
 		get_to_max(stack_b, mid);
