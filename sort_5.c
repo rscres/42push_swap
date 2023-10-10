@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:53:12 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 20:29:24 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/10 20:43:08 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	sort_5elem(t_dbl_list **stack_a)
 
 	lst_size = ft_dbl_lstsize(*stack_a);
 	stack_b = NULL;
-	push_b(stack_a, &stack_b);
+	push(stack_a, &stack_b, 2);
 	if (ft_dbl_lstsize(*stack_a) > 3)
-		push_b(stack_a, &stack_b);
+		push(stack_a, &stack_b, 2);
 	sort_3elem(stack_a);
 	while (ft_dbl_lstsize(*stack_a) <= 5)
 	{
@@ -85,7 +85,7 @@ void	sort_5elem(t_dbl_list **stack_a)
 		{
 			while ((*stack_a)->value != find_min(*stack_a))
 				reverse_rotate(stack_a, 1);
-			push_a(&stack_b, stack_a);
+			push(&stack_b, stack_a, 1);
 		}
 		else if (stack_b->value > find_max(*stack_a))
 			larger_than_max(stack_a, &stack_b, lst_size);

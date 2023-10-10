@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 18:23:38 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:44:09 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 	len = input_checker(&stack_a, argc, argv);
 	set_index(&stack_a);
 	if (len == 2)
-		swap_a(&stack_a);
+		swap(&stack_a, 1);
 	else if (len == 3)
 	{
 		while (!check_sorted(stack_a))
