@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 19:19:19 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:33:55 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,27 @@ void	ft_error(int n, t_dbl_list **stack_a);
 
 //set_index.c
 int		set_index(t_dbl_list **stack_a);
-// int		find_min_index(t_dbl_list *stack);
 
 //lst_create.c
 int		create_lst_1arg(t_dbl_list **stack_a, char *arr);
 int		create_lst_multiarg(t_dbl_list **stack_a, char **argv,
 			int argc, int init);
+
+//find.c
+int		find_min(t_dbl_list *stack);
+int		find_max(t_dbl_list *stack);
+int		find_max_index(t_dbl_list *stack);
+int		find_min_index(t_dbl_list *stack);
+
+//find2.c
+int		ft_last_index(t_dbl_list *stack);
+int		find_place_index(t_dbl_list *stack, int index);
+int		find_next_larger(t_dbl_list *stack, int index);
+int		search_piece(t_dbl_list *stack, int start, int end);
+
+//set.c
+int		piece_size(t_dbl_list **stack);
+int		set_start(int size_piece, t_dbl_list *stack_a);
+int		set_end(int size_piece, t_dbl_list *stack_a);
 
 #endif //PUSH_SWAP_H

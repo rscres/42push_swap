@@ -3,184 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/09 21:16:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:30:33 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	find_min(t_dbl_list *stack)
-{
-	int			min;
-	t_dbl_list	*tmp;
-
-	tmp = stack;
-	min = tmp->value;
-	while (tmp)
-	{
-		if (tmp->value < min)
-			min = tmp->value;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
-int	find_max(t_dbl_list *stack)
-{
-	int			max;
-	t_dbl_list	*tmp;
-
-	tmp = stack;
-	max = tmp->value;
-	while (tmp)
-	{
-		if (tmp->value > max)
-			max = tmp->value;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-int	find_max_index(t_dbl_list *stack)
-{
-	int			max;
-	t_dbl_list	*tmp;
-
-	tmp = stack;
-	max = tmp->index;
-	while (tmp)
-	{
-		if (tmp->index > max)
-			max = tmp->index;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-static int	find_min_index(t_dbl_list *stack)
-{
-	int			min;
-	t_dbl_list	*tmp;
-
-	tmp = stack;
-	min = tmp->index;
-	while (tmp)
-	{
-		if (tmp->index < min)
-			min = tmp->index;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
-int	piece_size(t_dbl_list **stack)
-{
-	int	size;
-
-	size = ft_dbl_lstsize(*stack);
-	if (size <= 10)
-		return (size / 5);
-	if (size <= 100)
-		return (size / 8);
-	else if (size <= 500)
-		return (size / 14);
-	else
-		return (size / 21);
-}
-
-int	ft_last_index(t_dbl_list *stack)
-{
-	t_dbl_list	*tmp;
-
-	tmp = stack;
-	while (stack && tmp->next)
-		tmp = tmp->next;
-	return (tmp->index);
-}
-
-int	find_place_index(t_dbl_list *stack, int index)
-{
-	int	i;
-
-	i = -1;
-	while (stack && stack->index != index)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (i);
-}
-
-int	find_next_larger(t_dbl_list *stack, int index)
-{
-	int	next;
-
-	next = -1;
-	while (stack)
-	{
-		if (stack->index > index && next == -1)
-		{
-			next = stack->index;
-		}
-		if ((stack->index > index) && (stack->index < next))
-		{
-			next = stack->index;
-		}
-		stack = stack->next;
-	}
-	return (next);
-}
-
-int	set_start(int size_piece, t_dbl_list *stack_a)
-{
-	static int	times;
-	static int	mid;
-	int			start;
-
-	if (times == 0)
-		times = 1;
-	if (!mid)
-		mid = ft_dbl_lstsize(stack_a) / 2;
-	start = mid - (size_piece * times);
-	if (start < 0)
-		start = 0;
-	times++;
-	return (start);
-}
-
-int	set_end(int size_piece, t_dbl_list *stack_a)
-{
-	static int	times;
-	static int	mid;
-	static int	size;
-	int			end;
-
-	if (times == 0)
-		times = 1;
-	if (!size)
-		size = ft_dbl_lstsize(stack_a);
-	if (!mid)
-		mid = size / 2;
-	end = mid + (size_piece * times);
-	if (end > size)
-		end = size;
-	times++;
-	return (end);
-}
-
-int	search_piece(t_dbl_list *stack, int start, int end)
-{
-	while (stack)
-	{
-		if (stack->index >= start && stack->index <= end)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}
 
 void	set_start_end(t_data *data, t_dbl_list **stack_a)
 {
@@ -261,8 +91,6 @@ int	check_b_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
 	int	target;
 	static int	piece;
 
-	// if (!piece)
-	// 	piece = piece_size(stack_b);
 	target = find_next_larger(stack_a, stack_b->index);
 	if (target == -1)
 	{	
@@ -271,8 +99,6 @@ int	check_b_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
 		else
 			target = find_max_index(stack_a);
 	}
-	// if (target == -1)
-	// 	target = find_min_index(stack_a);
 	moves_a = find_place_index(stack_a, target);
 	if (moves_a > ft_dbl_lstsize(stack_a) / 2)
 		moves_a = (ft_dbl_lstsize(stack_a) - moves_a) + 1;
@@ -285,14 +111,20 @@ int	check_b_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
 	return (1);
 }
 
-void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid)
+void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid, int piece)
 {
 	int	target;
 	int	place;
+	int	end;
+	int	size;
 
+	size = ft_dbl_lstsize(*stack_b);
+	end = size - piece;
 	while (*stack_b)
 	{
-		if (check_b_cheaper(*stack_a, *stack_b))
+		if (!search_piece(*stack_b, end, size))
+			end -= piece;
+		if (check_b_cheaper(*stack_a, *stack_b) || (*stack_b)->index < end)
 			get_to_max(stack_b, mid);
 		target = find_next_larger(*stack_a, (*stack_b)->index);
 		mid = ft_dbl_lstsize(*stack_a) / 2;
@@ -325,13 +157,15 @@ void	sort_large(t_dbl_list **stack_a)
 {
 	t_dbl_list	**stack_b;
 	int			mid;
+	int			piece;
 
 	stack_b = malloc(sizeof(t_dbl_list *));
 	*stack_b = NULL;
+	piece = piece_size(stack_a);
 	mid = ft_dbl_lstsize(*stack_a) / 2;
 	move_to_b(stack_a, stack_b, mid);
 	sort_3elem(stack_a);
-	move_to_a(stack_a, stack_b, mid);
+	move_to_a(stack_a, stack_b, mid, piece);
 	if (!check_sorted(*stack_a))
 	{
 		mid = ft_dbl_lstsize(*stack_a) / 2;
