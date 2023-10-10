@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 16:56:51 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 18:23:48 by rseelaen         ###   ########.fr       */
+/*   Created: 2023/10/10 15:03:18 by rseelaen          #+#    #+#             */
+/*   Updated: 2023/10/10 18:22:43 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	free_tab(char **tab)
-{
-	int	i;
+# include "../libft/libft.h"
+# include "../push_swap.h"
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return (i);
-}
 
-void	ft_error(t_dbl_list **stack_a)
-{
-	if (stack_a)
-		ft_dbl_lstclear(stack_a);
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
+//checker.c
+
+#endif //CHECKER_H

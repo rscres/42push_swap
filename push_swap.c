@@ -6,22 +6,11 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 15:38:08 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:23:38 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return (i);
-}
 
 void	print_list(t_dbl_list *list)
 {

@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 13:37:59 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:24:26 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid,
 
 //error.c
 void	ft_error(t_dbl_list **stack_a);
+int		free_tab(char **tab);
 
 //set_index.c
 int		set_index(t_dbl_list **stack_a);
