@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/09 22:33:55 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/10 13:37:59 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ typedef struct s_data
 	int	end;
 	int	start_counter;
 	int	end_counter;
+	int	target;
+	int	place;
+	int	size;
+	int	mid;
 }	t_data;
 
 //push_swap.c
@@ -71,8 +75,12 @@ void	sort_large(t_dbl_list **stack_a);
 int		find_max(t_dbl_list *stack);
 int		find_min(t_dbl_list *stack);
 
+//sort_large_to_a.c
+void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid,
+			int piece);
+
 //error.c
-void	ft_error(int n, t_dbl_list **stack_a);
+void	ft_error(t_dbl_list **stack_a);
 
 //set_index.c
 int		set_index(t_dbl_list **stack_a);
@@ -98,5 +106,6 @@ int		search_piece(t_dbl_list *stack, int start, int end);
 int		piece_size(t_dbl_list **stack);
 int		set_start(int size_piece, t_dbl_list *stack_a);
 int		set_end(int size_piece, t_dbl_list *stack_a);
+void	set_start_end(t_data *data, t_dbl_list **stack_a);
 
 #endif //PUSH_SWAP_H

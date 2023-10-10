@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:29:45 by renato            #+#    #+#             */
-/*   Updated: 2023/10/09 22:30:00 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:46:35 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,12 @@ int	set_end(int size_piece, t_dbl_list *stack_a)
 		end = size;
 	times++;
 	return (end);
+}
+
+void	set_start_end(t_data *data, t_dbl_list **stack_a)
+{
+	data->start = set_start(data->size_piece, *stack_a);
+	data->end = set_end(data->size_piece, *stack_a);
+	data->start_counter = 0;
+	data->end_counter = 0;
 }

@@ -12,6 +12,7 @@ SRC =	push_swap.c		\
 		sort_3.c		\
 		sort_5.c		\
 		sort_large.c	\
+		sort_large_to_a.c\
 		error.c			\
 		set_index.c		\
 		lst_create.c	\
