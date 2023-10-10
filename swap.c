@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:55:46 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/28 13:38:45 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:37:35 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_dbl_list **stack_a)
+void	swap(t_dbl_list **stack, int n)
 {
 	t_dbl_list	*first;
 	t_dbl_list	*second;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	first = *stack_a;
-	second = (*stack_a)->next;
+	first = *stack;
+	second = (*stack)->next;
 	first->next = second->next;
 	first->prev = NULL;
 	second->prev = NULL;
@@ -29,29 +29,11 @@ void	swap_a(t_dbl_list **stack_a)
 		first->next->prev = first;
 	if (second->next != NULL)
 		second->next->prev = second;
-	*stack_a = second;
-	write(1, "sa\n", 3);
-}
-
-void	swap_b(t_dbl_list **stack_b)
-{
-	t_dbl_list	*first;
-	t_dbl_list	*second;
-
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return ;
-	first = *stack_b;
-	second = (*stack_b)->next;
-	first->next = second->next;
-	first->prev = NULL;
-	second->prev = NULL;
-	second->next = first;
-	if (first->next != NULL)
-		first->next->prev = first;
-	if (second->next != NULL)
-		second->next->prev = second;
-	*stack_b = second;
-	write(1, "sb\n", 3);
+	*stack = second;
+	if (n == 1)
+		write(1, "sa\n", 3);
+	else if (n == 2)
+		write(1, "sb\n", 3);
 }
 
 void	swap_all(t_dbl_list **stack_a, t_dbl_list **stack_b)

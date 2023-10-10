@@ -60,6 +60,7 @@ clean:
 
 fclean: clean
 	rm -rf push_swap
+	rm -rf checker
 	@make -C libft fclean
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:41:27 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 12:10:08 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:27:29 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	sort_3elem(t_dbl_list **stack_a)
 	if (tmp->value > tmp->next->value
 		&& tmp->next->value < tmp->next->next->value
 		&& tmp->value > tmp->next->next->value)
-		rotate_a(stack_a);
+		rotate(stack_a, 1);
 	else if (tmp->value < tmp->next->value
 		&& tmp->next->value > tmp->next->next->value
 		&& tmp->value > tmp->next->next->value)
-		reverse_rotate_a(stack_a);
+		reverse_rotate(stack_a, 1);
 	else if (tmp->value > tmp->next->value)
-		swap_a(stack_a);
+		swap(stack_a, 1);
 	else if (tmp->value < tmp->next->value
 		&& tmp->next->value > tmp->next->next->value)
-		swap_a(stack_a);
+		swap(stack_a, 1);
 }

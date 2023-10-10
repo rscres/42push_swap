@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 18:24:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:38:19 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,19 @@ void	print_index(t_dbl_list *list);
 int		free_tab(char **tab);
 
 //swap.c
-void	swap_a(t_dbl_list **stack_a);
-void	swap_b(t_dbl_list **stack_b);
+void	swap(t_dbl_list **stack, int n);
 void	swap_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
 
 //rotate.c
-void	rotate_a(t_dbl_list **stack_a);
-void	rotate_b(t_dbl_list **stack_b);
 void	rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
+void	rotate(t_dbl_list **stack, int n);
 
 //reverse_rotate.c
-void	reverse_rotate_a(t_dbl_list **stack_a);
-void	reverse_rotate_b(t_dbl_list **stack_b);
 void	reverse_rotate_all(t_dbl_list **stack_a, t_dbl_list **stack_b);
+void	reverse_rotate(t_dbl_list **stack, int n);
 
 //push.c
-void	push_a(t_dbl_list **stack_b, t_dbl_list **stack_a);
-void	push_b(t_dbl_list **stack_a, t_dbl_list **stack_b);
+void	push(t_dbl_list **stack_src, t_dbl_list **stack_dest, int n);
 
 //check.c
 int		check_sorted(t_dbl_list *stack_a);

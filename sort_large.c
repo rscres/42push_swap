@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 13:12:12 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:29:51 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ void	move_to_b(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid)
 		update_start_end(*stack_a, mid, &data);
 		if ((*stack_a)->index >= data.start && (*stack_a)->index <= data.end)
 		{
-			push_b(stack_a, stack_b);
+			push(stack_a, stack_b, 2);
 			if ((*stack_b)->index < mid)
 			{
 				data.start_counter++;
-				rotate_b(stack_b);
+				rotate(stack_b, 2);
 			}
 			else
 				data.end_counter++;
 		}
 		else
-			rotate_a(stack_a);
+			rotate(stack_a, 1);
 	}
 }
 
@@ -69,10 +69,10 @@ void	sort_large(t_dbl_list **stack_a)
 		mid = ft_dbl_lstsize(*stack_a) / 2;
 		if (find_place_index(*stack_a, 0) <= mid)
 			while ((*stack_a)->index != 0)
-				rotate_a(stack_a);
+				rotate(stack_a, 1);
 		else
 			while ((*stack_a)->index != 0)
-				reverse_rotate_a(stack_a);
+				reverse_rotate(stack_a, 1);
 	}
 	free(stack_b);
 }

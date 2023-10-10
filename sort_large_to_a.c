@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large_to_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:49:13 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 13:38:12 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:29:24 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	get_to_max(t_dbl_list **stack_b, int mid, int piece)
 	{
 		while ((*stack_b)->index != max)
 		{
-			rotate_b(stack_b);
+			rotate(stack_b, 2);
 			counter++;
 		}
 	}
@@ -32,7 +32,7 @@ static int	get_to_max(t_dbl_list **stack_b, int mid, int piece)
 	{
 		while ((*stack_b)->index != max)
 		{
-			reverse_rotate_b(stack_b);
+			reverse_rotate(stack_b, 2);
 			counter++;
 		}
 	}
@@ -75,11 +75,11 @@ static void	target_not_found(t_dbl_list **stack_a, t_dbl_list **stack_b,
 	place = find_place_index(*stack_a, target);
 	if (place < mid)
 		while ((*stack_a)->value != target)
-			rotate_a(stack_a);
+			rotate(stack_a, 1);
 	else
 		while ((*stack_a)->value != target)
-			reverse_rotate_a(stack_a);
-	push_a(stack_b, stack_a);
+			reverse_rotate(stack_a, 1);
+	push(stack_b, stack_a, 1);
 }
 
 static void	update_data(t_data *data, t_dbl_list **stack_a,
@@ -111,11 +111,11 @@ void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid,
 		{
 			if (data.place <= data.mid)
 				while ((*stack_a)->index != data.target)
-					rotate_a(stack_a);
+					rotate(stack_a, 1);
 			else
 				while ((*stack_a)->index != data.target)
-					reverse_rotate_a(stack_a);
-			push_a(stack_b, stack_a);
+					reverse_rotate(stack_a, 1);
+			push(stack_b, stack_a, 1);
 		}
 	}
 }

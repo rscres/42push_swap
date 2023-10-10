@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:53:12 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 12:10:44 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:29:24 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	larger_than_max(t_dbl_list **stack_a, t_dbl_list **stack_b,
 	int lst_size)
 {
 	while ((*stack_a)->value != find_min(*stack_a))
-		rotate_a(stack_a);
-	push_a(stack_b, stack_a);
+		rotate(stack_a, 1);
+	push(stack_b, stack_a, 1);
 	while ((*stack_a)->value != find_min(*stack_a)
 		&& ft_dbl_lstsize(*stack_a) == lst_size)
-		rotate_a(stack_a);
+		rotate(stack_a, 1);
 }
 
 static void	middle_value(t_dbl_list **stack_a, t_dbl_list **stack_b,
@@ -55,15 +55,15 @@ static void	middle_value(t_dbl_list **stack_a, t_dbl_list **stack_b,
 		&& (*stack_b)->value > (*stack_a)->next->value)
 		while ((*stack_b)->value > (*stack_a)->value
 			|| (*stack_b)->value < ft_last_value(*stack_a))
-			reverse_rotate_a(stack_a);
+			reverse_rotate(stack_a, 1);
 	else
 		while ((*stack_b)->value > (*stack_a)->value
 			|| (*stack_b)->value < ft_last_value(*stack_a))
-			rotate_a(stack_a);
-	push_a(stack_b, stack_a);
+			rotate(stack_a, 1);
+	push(stack_b, stack_a, 1);
 	while ((*stack_a)->value != find_min(*stack_a)
 		&& ft_dbl_lstsize(*stack_a) == lst_size)
-		reverse_rotate_a(stack_a);
+		reverse_rotate(stack_a, 1);
 }
 
 void	sort_5elem(t_dbl_list **stack_a)
@@ -84,7 +84,7 @@ void	sort_5elem(t_dbl_list **stack_a)
 		if (stack_b->value < find_min(*stack_a))
 		{
 			while ((*stack_a)->value != find_min(*stack_a))
-				reverse_rotate_a(stack_a);
+				reverse_rotate(stack_a, 1);
 			push_a(&stack_b, stack_a);
 		}
 		else if (stack_b->value > find_max(*stack_a))

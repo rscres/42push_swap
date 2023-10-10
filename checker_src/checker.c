@@ -3,102 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:20 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 18:41:44 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:37:18 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void	swap(t_dbl_list **stack, int n)
-{
-	t_dbl_list	*first;
-	t_dbl_list	*second;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	first = *stack;
-	second = (*stack)->next;
-	first->next = second->next;
-	first->prev = NULL;
-	second->prev = NULL;
-	second->next = first;
-	if (first->next != NULL)
-		first->next->prev = first;
-	if (second->next != NULL)
-		second->next->prev = second;
-	*stack = second;
-	if (n == 1)
-		write(1, "sa\n", 3);
-	else if (n == 2)
-		write(1, "sb\n", 3);
-}
-
-void	rotate(t_dbl_list **stack, int n)
-{
-	t_dbl_list	*tmp;
-	t_dbl_list	*cur;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	tmp = *stack;
-	cur = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	while (cur->next != NULL)
-		cur = cur->next;
-	tmp->prev = cur;
-	tmp->next = NULL;
-	cur->next = tmp;
-	if (n == 1)
-		write(1, "ra\n", 3);
-	else if (n == 2)
-		write(1, "rb\n", 3);
-}
-
-void	reverse_rotate(t_dbl_list **stack, int n)
-{
-	t_dbl_list	*tmp;
-	t_dbl_list	*head;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	head = *stack;
-	tmp = (*stack)->next;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = head;
-	tmp->prev->next = NULL;
-	tmp->prev = NULL;
-	head->prev = tmp;
-	*stack = tmp;
-	if (n == 1)
-		write(1, "rra\n", 4);
-	else if (n == 2)
-		write(1, "rrb\n", 4);
-}
-
-void	push(t_dbl_list **stack_src, t_dbl_list **stack_dest, int n)
-{
-	t_dbl_list	*tmp;
-
-	if (!stack_src)
-		return ;
-	tmp = *stack_src;
-	*stack_src = (*stack_src)->next;
-	if (*stack_src)
-		(*stack_src)->prev = NULL;
-	tmp->next = *stack_dest;
-	if (*stack_dest)
-		(*stack_dest)->prev = tmp;
-	*stack_dest = tmp;
-	if (n == 1)
-		write(1, "pa\n", 3);
-	else if (n == 2)
-		write(1, "pb\n", 3);
-}
 
 int	valid_move(char *move, t_dbl_list **stack_a, t_dbl_list **stack_b)
 {
