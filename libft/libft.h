@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/21 12:44:50 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:29:56 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define FD_MAX 1024
 # define HEX_CAPS	"0123456789ABCDEF"
 # define HEX_LOW	"0123456789abcdef"
+
+// Get_next_line
+char		*get_next_line(int fd);
 
 // Char functions
 int			ft_toupper(int a);
