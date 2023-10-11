@@ -6,17 +6,16 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:49:13 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 20:29:24 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:18:50 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_to_max(t_dbl_list **stack_b, int mid, int piece)
+static int	get_to_max(t_dbl_list **stack_b)
 {
 	int			counter;
 	int			max;
-	static int	first;
 
 	counter = 0;
 	max = find_max_index(*stack_b);
@@ -66,7 +65,7 @@ static int	check_b_cheaper(t_dbl_list *stack_a, t_dbl_list *stack_b)
 }
 
 static void	target_not_found(t_dbl_list **stack_a, t_dbl_list **stack_b,
-	int mid, int piece)
+	int mid)
 {
 	int	target;
 	int	place;
@@ -103,10 +102,10 @@ void	move_to_a(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid,
 		if (!search_piece(*stack_b, data.end, data.size))
 			data.end -= piece;
 		if (check_b_cheaper(*stack_a, *stack_b) || (*stack_b)->index < data.end)
-			get_to_max(stack_b, data.mid, piece);
+			get_to_max(stack_b);
 		update_data(&data, stack_a, stack_b);
 		if (data.target == -1)
-			target_not_found(stack_a, stack_b, data.mid, piece);
+			target_not_found(stack_a, stack_b, data.mid);
 		else
 		{
 			if (data.place <= data.mid)

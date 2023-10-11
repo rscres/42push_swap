@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 13:03:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:12:26 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	input_checker(t_dbl_list **stack_a, int argc, char **argv)
 {
 	int	len;
 
+	len = 0;
 	if (argc < 2)
 		ft_error(stack_a);
 	if (argc == 2)

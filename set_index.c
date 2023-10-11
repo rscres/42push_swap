@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 20:37:51 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/05 17:52:04 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:19:03 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	find_smallest_index(t_dbl_list *stack)
 {
 	t_dbl_list	*tmp;
-	int			cur;
 	int			min;
 
 	tmp = stack;

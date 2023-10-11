@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:29:50 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 15:09:26 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:19:14 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	create_lst_multiarg(t_dbl_list **stack_a, char **argv, int argc, int init)
 int	create_lst_1arg(t_dbl_list **stack_a, char *arr)
 {
 	char	**tab;
-	int		*num;
 	int		i;
 
 	if (arr[0] == '\0' || arr[0] == ' ' || arr[0] == '\t' || arr[0] == '\n')
