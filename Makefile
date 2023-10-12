@@ -1,48 +1,52 @@
 NAME = push_swap
 BONUS = checker
+
 CC = cc
 FLAGS = -Wall -Werror -Wextra -g3 -O3
+
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-SRC =	push_swap.c			\
-		swap.c				\
-		rotate.c			\
-		reverse_rotate.c	\
-		push.c				\
-		check.c				\
-		sort_3.c			\
-		sort_5.c			\
-		sort_large.c		\
-		sort_large_to_a.c	\
-		error.c				\
-		set_index.c			\
-		lst_create.c		\
-		find.c				\
-		find2.c				\
-		set.c
+SRC_DIR = ./src/
+SRC =	$(SRC_DIR)push_swap.c		\
+		$(SRC_DIR)swap.c			\
+		$(SRC_DIR)rotate.c			\
+		$(SRC_DIR)reverse_rotate.c	\
+		$(SRC_DIR)push.c			\
+		$(SRC_DIR)check.c			\
+		$(SRC_DIR)sort_3.c			\
+		$(SRC_DIR)sort_5.c			\
+		$(SRC_DIR)sort_large.c		\
+		$(SRC_DIR)sort_large_to_a.c	\
+		$(SRC_DIR)error.c			\
+		$(SRC_DIR)set_index.c		\
+		$(SRC_DIR)lst_create.c		\
+		$(SRC_DIR)find.c			\
+		$(SRC_DIR)find2.c			\
+		$(SRC_DIR)set.c
 
-BONUS_SRC = ./checker_src/checker.c	\
-			swap.c					\
-			rotate.c				\
-			reverse_rotate.c		\
-			push.c					\
-			lst_create.c			\
-			check.c					\
-			error.c
+BONUS_DIR = ./bonus/
+BONUS_SRC = $(BONUS_DIR)checker.c		\
+			$(SRC_DIR)swap.c			\
+			$(SRC_DIR)rotate.c			\
+			$(SRC_DIR)reverse_rotate.c	\
+			$(SRC_DIR)push.c			\
+			$(SRC_DIR)lst_create.c		\
+			$(SRC_DIR)check.c			\
+			$(SRC_DIR)error.c
 
 LIBS = -Llibft -lft
 
-LIBFT = libft.a
+LIBFT = ./libft/libft.a
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) -o $(NAME)
 
-bonus: $(BONUS)
+bonus: $(LIBFT) $(BONUS)
 
-$(BONUS): $(LIBFT) $(BONUS_OBJ)
+$(BONUS): $(BONUS_OBJ)
 	$(CC) $(FLAGS) $(BONUS_OBJ) $(LIBS) -o $(BONUS)
 
 $(LIBFT):
@@ -51,17 +55,17 @@ $(LIBFT):
 	@echo Libft done.
 
 %.o: %.c
-	$(CC) $(FLAGS) $(CC_FLAGS) -O3 -c $< -o $@
+	$(CC) $(FLAGS) -I. -I./includes/ -c $< -o $@
 
 clean:
+	@make -C libft clean
 	rm -rf $(OBJ)
 	rm -rf $(BONUS_OBJ)
-	@make -C libft clean
-
+	
 fclean: clean
-	rm -rf push_swap
-	rm -rf checker
 	@make -C libft fclean
+	rm -rf push_swap
+	rm -rf checker	
 
 re: fclean all
 

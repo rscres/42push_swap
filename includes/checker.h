@@ -6,15 +6,13 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:18 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/11 19:22:55 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:53:08 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "../push_swap.h"
-
-//checker.c
+# include "push_swap.h"
 
 #endif //CHECKER_H

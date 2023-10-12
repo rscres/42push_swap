@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:18:07 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/11 13:54:06 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:20:25 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	int			len;
 
 	stack_a = NULL;
-	len = input_checker(&stack_a, argc, argv);
+	len = input_checker(&stack_a, argc, argv, 1);
 	set_index(&stack_a);
 	if (len == 2)
 		swap(&stack_a, 1);

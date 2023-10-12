@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/11 21:07:41 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:22:55 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,22 @@ int	check_int(char **arg)
 	return (1);
 }
 
-int	input_checker(t_dbl_list **stack_a, int argc, char **argv)
+static void	sort_status(t_dbl_list **stack_a, int flag)
+{
+	if (check_sorted(*stack_a) && flag == 1)
+	{
+		ft_dbl_lstclear(stack_a);
+		exit(0);
+	}
+	else if (check_sorted(*stack_a) && flag == 0)
+	{
+		ft_dbl_lstclear(stack_a);
+		ft_putstr_fd("OK\n", 1);
+		exit (0);
+	}
+}
+
+int	input_checker(t_dbl_list **stack_a, int argc, char **argv, int flag)
 {
 	int	len;
 
@@ -87,10 +102,6 @@ int	input_checker(t_dbl_list **stack_a, int argc, char **argv)
 	}
 	if (check_doubles(*stack_a))
 		ft_error(stack_a);
-	if (check_sorted(*stack_a))
-	{
-		ft_dbl_lstclear(stack_a);
-		exit(0);
-	}
+	sort_status(stack_a, flag);
 	return (len);
 }

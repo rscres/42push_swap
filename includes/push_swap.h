@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 20:38:19 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/12 13:20:03 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	push(t_dbl_list **stack_src, t_dbl_list **stack_dest, int n);
 int		check_sorted(t_dbl_list *stack_a);
 int		check_doubles(t_dbl_list *stack_a);
 int		check_int(char **arg);
-int		input_checker(t_dbl_list **stack_a, int argc, char **argv);
+int		input_checker(t_dbl_list **stack_a, int argc, char **argv, int flag);
 
 //sort_3.c
 void	sort_3elem(t_dbl_list **stack_a);
