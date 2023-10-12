@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 21:12:26 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/11 21:07:41 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	check_int(char **arg)
 	while (arg[i])
 	{
 		j = 0;
+		if (ft_strncmp(arg[i], "", 1) == 0)
+			return (0);
 		num = ft_atol(arg[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (0);
@@ -74,7 +76,7 @@ int	input_checker(t_dbl_list **stack_a, int argc, char **argv)
 
 	len = 0;
 	if (argc < 2)
-		ft_error(stack_a);
+		exit (1);
 	if (argc == 2)
 		len = create_lst_1arg(stack_a, argv[1]);
 	if (argc > 2)
