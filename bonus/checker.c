@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:20 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/12 13:20:13 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:55:22 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	main(int argc, char **argv)
 		if (check_move(move, &stack_a, &stack_b))
 		{	
 			clear_lists(&stack_a, &stack_b);
+			free(move);
 			ft_error(NULL);
 		}
 		free(move);
 		move = get_next_line(0);
 	}
-	if (move)
-		free(move);
+	free(move);
 	check_output(stack_a, stack_b);
 	clear_lists(&stack_a, &stack_b);
 	return (0);

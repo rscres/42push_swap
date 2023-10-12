@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:51:36 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/12 13:22:55 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:49:19 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	check_int(char **arg)
 	{
 		j = 0;
 		if (ft_strncmp(arg[i], "", 1) == 0)
+			return (0);
+		if (ft_atol(arg[i]) == 0 && ft_strncmp(arg[i], "0", 1) != 0)
 			return (0);
 		num = ft_atol(arg[i]);
 		if (num > INT_MAX || num < INT_MIN)

@@ -9,7 +9,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c\
 	ft_lstdelone.c ft_lstiter.c ft_lstlast.c\
 	ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_abs.c ft_swap.c\
-	get_next_line.c\
+	get_next_line.c get_next_line_utils.c\
 	ft_printf/ft_printf.c ft_printf/num_printers.c\
 	ft_printf/handlers.c ft_printf/checkers.c\
 	ft_dbl_lstadd_back.c ft_dbl_lstadd_front.c ft_dbl_lstclear.c\

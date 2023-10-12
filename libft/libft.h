@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/11 19:22:55 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:20:24 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,23 @@
 # define HEX_LOW	"0123456789abcdef"
 
 // Get_next_line
+typedef struct s_char
+{
+	char			c;
+	struct s_char	*next;
+}	t_char;
+
+typedef struct s_gnl
+{
+	int		bytesread;
+	int		pos;
+	char	str[BUFFER_SIZE];
+}	t_gnl;
+
 char		*get_next_line(int fd);
+void		ft_lstadd_back_gnl(t_char **lst, t_char *node);
+t_char		*ft_lstnew_gnl(char content);
+int			ft_lstsize_gnl(t_char *lst);
 
 // Char functions
 int			ft_toupper(int a);

@@ -5,93 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 22:51:03 by renato            #+#    #+#             */
-/*   Updated: 2023/10/12 13:33:27 by rseelaen         ###   ########.fr       */
+/*   Created: 2023/05/16 16:27:15 by rseelaen          #+#    #+#             */
+/*   Updated: 2023/10/12 14:20:47 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*get_line(char **buff_read, char **line)
+static char	*line_writer(t_char **lst)
 {
-	size_t	i;
-	char	*new_buff;
+	t_char	*line;
+	t_char	*temp;
+	char	*line_ret;
+	int		i;
 
+	line_ret = malloc((ft_lstsize_gnl(*lst) + 1) * sizeof(char));
+	if (!line_ret)
+		return (NULL);
+	line = *lst;
 	i = 0;
-	new_buff = NULL;
-	while ((*(*buff_read + i) != '\n') && (*(*buff_read + i) != '\0'))
-		i++;
-	if (*(*buff_read + i) == '\n')
+	while (line != NULL)
 	{
-		i++;
-		*line = ft_substr(*buff_read, 0, i);
-		new_buff = ft_strdup(*buff_read + i);
-	}
-	else
-		*line = ft_strdup(*buff_read);
-	free(*buff_read);
-	*buff_read = NULL;
-	return (new_buff);
-}
-
-ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
-{
-	char	*temp;
-	ssize_t	n;
-
-	n = 1;
-	while (!ft_strchr(*buff_read, '\n') && n)
-	{
-		n = read(fd, *buffer, BUFFER_SIZE);
-		(*buffer)[n] = '\0';
-		temp = *buff_read;
-		*buff_read = ft_strjoin(temp, *buffer);
+		line_ret[i++] = line->c;
+		temp = line;
+		line = line->next;
 		free(temp);
 	}
-	free(*buffer);
-	*buffer = NULL;
-	*buff_read = get_line(buff_read, line);
-	if (**line == '\0')
-	{
-		free(*line);
-		*line = NULL;
-	}
-	return (n);
+	line_ret[i] = '\0';
+	*lst = NULL;
+	return (line_ret);
 }
 
-void	ft_exit(char **buff_read, char **buffer)
+static char	*line_reader(t_gnl *data, t_char *head, int fd)
 {
-	if (*buff_read)
-		free(*buff_read);
-	if (*buffer)
-		free(*buffer);
-	return ;
+	while (data->bytesread > 0)
+	{
+		ft_lstadd_back_gnl(&head, ft_lstnew_gnl(data->str[data->pos]));
+		if (data->str[data->pos] == '\n' || data->str[data->pos] == '\0')
+			break ;
+		if (data->pos == data->bytesread - 1 || data->bytesread == 1)
+		{
+			data->pos = -1;
+			ft_bzero(data->str, BUFFER_SIZE);
+			if (read(fd, data->str, BUFFER_SIZE) <= 0)
+				break ;
+		}
+		data->pos++;
+	}
+	data->pos++;
+	return (line_writer(&head));
 }
 
 char	*get_next_line(int fd)
 {
-	static char		*buff_read[FD_MAX];
-	char			*buffer;
-	char			*line;
-	ssize_t			n;
+	t_char			*head;
+	static t_gnl	data;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_MAX)
-		return (NULL);
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	if (read(fd, buffer, 0) < 0)
+	if (data.pos >= data.bytesread || data.pos == 0)
 	{
-		free(buffer);
-		return (NULL);
+		data.pos = 0;
+		data.bytesread = read(fd, data.str, BUFFER_SIZE);
 	}
-	if (!buff_read[fd])
-		buff_read[fd] = ft_strdup("");
-	n = read_file(fd, &buffer, &buff_read[fd], &line);
-	if ((n == 0 && !line))
-	{
-		ft_exit(&buff_read[fd], &buffer);
+	if (data.bytesread <= 0 || data.str[data.pos] == '\0')
 		return (NULL);
-	}
-	return (line);
+	head = NULL;
+	return (line_reader(&data, head, fd));
 }
