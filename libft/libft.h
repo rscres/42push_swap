@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 21:05:47 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 21:29:56 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/11 19:22:55 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int			ft_printf(const char *s, ...);
 int			ft_abs(int x);
 void		ft_swap(int *a, int *b);
 size_t		ft_arrlen(char **arr);
+void		ft_safe_free(void *ptr);
 
 // Printf functions
 //FLAGS

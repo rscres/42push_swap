@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:22:58 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/09/19 12:39:37 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:58:47 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_arrlen(char **arr)
 {
 	size_t	i;
 
+	if (!arr)
+		return (0);
 	i = 0;
 	while (arr[i])
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:51:03 by renato            #+#    #+#             */
-/*   Updated: 2023/08/15 22:51:09 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:29:36 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
 	return (n);
 }
 
+void	ft_exit(char **buff_read, char **buffer)
+{
+	if (*buff_read)
+		free(*buff_read);
+	if (*buffer)
+		free(*buffer);
+	return ;
+}
+
 char	*get_next_line(int fd)
 {
 	static char		*buff_read[FD_MAX];
@@ -79,10 +88,11 @@ char	*get_next_line(int fd)
 	if (!buff_read[fd])
 		buff_read[fd] = ft_strdup("");
 	n = read_file(fd, &buffer, &buff_read[fd], &line);
-	if (n == 0 && !line)
+	if ((n == 0 && !line))
 	{
-		free(buffer);
-		return (NULL);
+		ft_exit(&buff_read[fd], &buffer);
 	}
+	if (line[0] == '\n' || buff_read[fd][0] == '\0')
+		ft_exit(&buff_read[fd], &buffer);
 	return (line);
 }
