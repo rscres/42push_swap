@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:51:03 by renato            #+#    #+#             */
-/*   Updated: 2023/10/12 12:34:57 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:33:27 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,5 @@ char	*get_next_line(int fd)
 		ft_exit(&buff_read[fd], &buffer);
 		return (NULL);
 	}
-	// if ((line[0] == '\n' && line[0] == '\0') || buff_read[fd][0] == '\0')
-	// 	ft_exit(&buff_read[fd], &buffer);
 	return (line);
 }
