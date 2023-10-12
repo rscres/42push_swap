@@ -6,11 +6,10 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:20 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/12 13:55:22 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:26:12 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "checker.h"
 
 int	check_move(char *move, t_dbl_list **stack_a, t_dbl_list **stack_b)

@@ -26,7 +26,7 @@ SRC =	$(SRC_DIR)push_swap.c		\
 		$(SRC_DIR)set.c
 
 BONUS_DIR = ./bonus/
-BONUS_SRC = $(BONUS_DIR)checker.c		\
+BONUS_SRC = $(BONUS_DIR)checker_bonus.c	\
 			$(SRC_DIR)swap.c			\
 			$(SRC_DIR)rotate.c			\
 			$(SRC_DIR)reverse_rotate.c	\
