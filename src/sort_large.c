@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:02:14 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/10 20:29:51 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:48:31 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static void	update_start_end(t_dbl_list *stack, int mid, t_data *data)
 	if (!search_piece(stack, mid, data->end))
 	{
 		data->end = set_end(data->size_piece, stack);
-		data->end_counter = 0;
 	}
 	if (!search_piece(stack, data->start, mid))
 	{
 		data->start = set_start(data->size_piece, stack);
-		data->start_counter = 0;
 	}
 }
 
@@ -39,12 +37,7 @@ void	move_to_b(t_dbl_list **stack_a, t_dbl_list **stack_b, int mid)
 		{
 			push(stack_a, stack_b, 2);
 			if ((*stack_b)->index < mid)
-			{
-				data.start_counter++;
 				rotate(stack_b, 2);
-			}
-			else
-				data.end_counter++;
 		}
 		else
 			rotate(stack_a, 1);

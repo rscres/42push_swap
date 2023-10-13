@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:47:42 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/12 13:20:03 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:50:30 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ typedef struct s_data
 	int	size_piece;
 	int	start;
 	int	end;
-	int	start_counter;
-	int	end_counter;
 	int	target;
 	int	place;
 	int	size;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:20 by rseelaen          #+#    #+#             */
-/*   Updated: 2023/10/12 14:26:12 by rseelaen         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:29:57 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_move(char *move, t_dbl_list **stack_a, t_dbl_list **stack_b)
 		reverse_rotate(stack_b, 0);
 	else if (!ft_strncmp(move, "rrr\n", 4))
 		reverse_rotate_all(stack_a, stack_b);
-	else if (!ft_strncmp(move, "pa\n", 3))
+	else if (!ft_strncmp(move, "pa\n", 3) && stack_b)
 		push(stack_b, stack_a, 0);
 	else if (!ft_strncmp(move, "pb\n", 3))
 		push(stack_a, stack_b, 0);

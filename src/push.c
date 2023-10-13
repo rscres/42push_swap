@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 23:22:58 by renato            #+#    #+#             */
-/*   Updated: 2023/10/10 20:38:07 by renato           ###   ########.fr       */
+/*   Updated: 2023/10/13 12:31:17 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push(t_dbl_list **stack_src, t_dbl_list **stack_dest, int n)
 {
 	t_dbl_list	*tmp;
 
-	if (!stack_src)
+	if (*stack_src == NULL)
 		return ;
 	tmp = *stack_src;
 	*stack_src = (*stack_src)->next;
